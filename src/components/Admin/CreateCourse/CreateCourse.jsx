@@ -1,8 +1,11 @@
 import { Button, Container, Grid, Heading, Image, Input, Select, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../Dashboard/Sidebar'
 import cursor from "../../../assets/images/cursor.png"
 import { fileUploadCss } from '../../Auth/Register'
+import { useDispatch, useSelector } from 'react-redux'
+import { createCourse } from '../../../redux/actions/admin'
+import toast from 'react-hot-toast'
 
 const CreateCourse = () => {
   const [title, setTitle] = useState('');
@@ -24,13 +27,35 @@ const CreateCourse = () => {
       setImage(file);
     }
 }
+const {loading,message,error} = useSelector(state => state.admin);
+const dispatch = useDispatch();
+const submitHandler = (e) => {
+  e.preventDefault();
+  const newform = new FormData();
+  newform.append("title",title);
+  newform.append("description",description);
+  newform.append("createdBy",createdBy);
+  newform.append("category",category);
+  newform.append("file",image);
+  dispatch(createCourse(newform));
+}
+useEffect(()=>{
+  if(message){
+    toast.success(message);
+    dispatch({type: 'clearMessage'});
+  }
+  if(error){
+    toast.success(error);
+    dispatch({type: 'clearError'});
+  }
 
+},[dispatch,error,message])
   return (
     <Grid css={{
       cursor: `url(${cursor}) ,default`
     }} minH={"100vh"} templateColumns={["1fr", "7fr 1fr"]}>
       <Container py={"16"}>
-        <form>
+        <form onSubmit={submitHandler}>
           <Heading textTransform={"uppercase"} children="Create Course" my={'16'} textAlign={["center", "left"]} />
           <VStack m={"auto"} spacing={"8"}>
             <Input
@@ -86,7 +111,7 @@ const CreateCourse = () => {
                   <Image src={imagePrev} boxSize={"64"} objectFit={"contain"} />
                 )
               }
-              <Button w={"full"} colorScheme='purple' type='submit'>
+              <Button isLoading={loading}  w={"full"} colorScheme='purple' type='submit'>
                 Create
               </Button>
 

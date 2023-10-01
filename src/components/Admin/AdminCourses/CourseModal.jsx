@@ -18,7 +18,7 @@ import {
 import React, { useState } from 'react';
 import { RiDeleteBin7Fill } from 'react-icons/ri';
 import { fileUploadCss } from '../../Auth/Register'
-const CourseModal = ({ isOpen, onClose, id, deleteButtonHandler, addLectureHandler, courseTitle, lectures = [1,2,3,4,5,6,7,8] }) => {
+const CourseModal = ({ isOpen, onClose, id, deleteButtonHandler, addLectureHandler, courseTitle, lectures = [],loading }) => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -59,14 +59,15 @@ const CourseModal = ({ isOpen, onClose, id, deleteButtonHandler, addLectureHandl
                                 lectures.map((item,index)=>(
                                 <VideoCard
                                 key={index}
-                                    title={'React Intro'}
+                                    title={item.title}
                                     description={
-                                        'This is a intro lecture, where you will know the basic of react'
+                                        item.description
                                     }
                                     num={index+1}
-                                    lectureId={'wklnflwrkflerkfljenve'}
+                                    lectureId={item._id}
                                     courseId={id}
                                     deleteButtonHandler={deleteButtonHandler}
+                                    loading={loading}
                                 />))
                             }
                         </Box>

@@ -45,7 +45,7 @@ const About = () => {
             </Text>
 <Link to={"/subscribe"} ><Button colorScheme="yellow" variant={"ghost"}>CheckOut Our Courses</Button></Link>
         </Stack>
-        {/* <VideoPlayer/> */}
+        <VideoPlayer/>
 
         <TandC termAndCondition={termAndCondition} />
         <HStack my={"4"} p={"4"}>
