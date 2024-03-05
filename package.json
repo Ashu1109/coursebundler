@@ -37,7 +37,7 @@
     "extends": "react-app"
   },
   "overrides": {
-    "@svgr/webpack": "$@svgr/webpack"
+    "@svgr/webpack": "@svgr/webpack"
   },
   "browserslist": {
     "production": [
