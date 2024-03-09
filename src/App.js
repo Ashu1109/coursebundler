@@ -204,7 +204,6 @@ const App = () => {
         <Footer />
         <Toaster />
       </>
-      )}
     </Router>
   );
 };
