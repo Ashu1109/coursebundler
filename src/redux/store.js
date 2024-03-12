@@ -20,4 +20,4 @@ export default store;
 
 
 
-export const server = `https://coursebundler-lfiw.onrender.com/api/v1`;
+export const server = `http://localhost:4000/api/v1`;
