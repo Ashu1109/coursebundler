@@ -11,7 +11,7 @@ const Founder = () => (
             <Text children="Co-Founder" opacity={'0.7'} />
         </VStack>
         <VStack justifyContent={"center"} alignItems={["center",'flex-start']} >
-            <Heading children="Aayush Kumar" size={['md','lg']} />
+            <Heading children="Nupur Satpathy" size={['md','lg']} />
             <Text textAlign={['center','left']} children={`Hi, I am a full-stack developer.
             Our mission is Create quality product.`} />
         </VStack>
